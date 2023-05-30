@@ -61,7 +61,7 @@ def cargar_en_redshift(conn, table_name, dataframe):
     sql_dtypes = [type_map[str(dtype)] for dtype in tipos]
     # Definir formato SQL VARIABLE TIPO_DATO
     column_defs = [f"{name} {data_type}" for name, data_type in zip(cols, sql_dtypes)]
-    table_schema = f"""
+    table_schema = f"""CREATE TABLE
                          {table_name} (
             {', '.join(column_defs)}
         );
